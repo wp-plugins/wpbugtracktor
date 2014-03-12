@@ -27,8 +27,8 @@ if(!function_exists('wpBugTracktorMainShortcode')) {
                 'allowguests' => 'false',
         ), $atts));  
         
-        wp_register_style( 'wp-bug-tracktor', plugins_url().'/wp-bug-tracktor/css/wp-bug-tracktor.css' );
-        wp_enqueue_style( 'wp-bug-tracktor' );                    
+        wp_register_style( 'wpbugtracktor', plugins_url().'/wpbugtracktor/css/wpbugtracktor.css' );
+        wp_enqueue_style( 'wpbugtracktor' );                    
         
         $output = '<div class="wpBugTracktor">
 

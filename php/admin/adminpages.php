@@ -3,7 +3,7 @@
 if(!function_exists('wpBugTracktorAdminPageHeader')) {
     function wpBugTracktorAdminPageHeader() {
         echo '
-        <img src="'.plugins_url().'/wp-bug-tracktor/images/logo.png" alt="wpBugTracktor" /><br />
+        <img src="'.plugins_url().'/wpbugtracktor/images/logo.png" alt="wpBugTracktor" /><br />
             ';
         wpBugTracktorCheckAdminPermissions();
     }
@@ -15,10 +15,10 @@ if(!function_exists('wpBugTracktorAdminPageMain')) {
         echo '
         <div style="padding:10px;font-size:1.7em;">
             <h2>'.__('Welcome to Our BETA Test', 'wpbugtracktor').'</h2>
-            <table class="widefat"><tr><td>'.__('wp-Bug-Tracktor is an open source issue tracking solution for Wordpress.  The software is fresh out the oven, and really not ready for production.  This is early beta software.  As in, we haven\'t even finished implementing all of our basic features yet.  Don\'t worry, we\'re going to take care of that very quickly.  Within a month or two this software will be feature complete and ready for the good old 1.0 stable production release... at least that\'s that goal.  You can help!  Give us feedback, bug reports, feature requests, and any help or encouragement you can spare.  Thanks for checking out our software; we hope you enjoy it!', 'wpbugtracktor').'</td></tr></table>
+            <table class="widefat"><tr><td>'.__('wpbugtracktor is an open source issue tracking solution for Wordpress.  The software is fresh out the oven, and really not ready for production.  This is early beta software.  As in, we haven\'t even finished implementing all of our basic features yet.  Don\'t worry, we\'re going to take care of that very quickly.  Within a month or two this software will be feature complete and ready for the good old 1.0 stable production release... at least that\'s that goal.  You can help!  Give us feedback, bug reports, feature requests, and any help or encouragement you can spare.  Thanks for checking out our software; we hope you enjoy it!', 'wpbugtracktor').'</td></tr></table>
             <br />
             <h2>'.__('Beta Test Feedback', 'wpbugtracktor').'</h2>
-            <table class="widefat"><tr><td><center><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=bug&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wp-bug-tracktor/images/bug_report.png" alt="" /><br /> '.__('Report a bug', 'wpbugtracktor').'</center></button></a><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=feature&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wp-bug-tracktor/images/feature_request.png" alt="" /><br /> '.__('Feature request', 'wpbugtracktor').'</center></button></a></center></td></tr></table>
+            <table class="widefat"><tr><td><center><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=bug&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wpbugtracktor/images/bug_report.png" alt="" /><br /> '.__('Report a bug', 'wpbugtracktor').'</center></button></a><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=feature&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wpbugtracktor/images/feature_request.png" alt="" /><br /> '.__('Feature request', 'wpbugtracktor').'</center></button></a></center></td></tr></table>
             
         </div>';
     }
@@ -120,7 +120,7 @@ if(!function_exists('wpBugTracktorAdminPageEditProjects')) {
             echo ' 
                 function wpbtSaveNewComponent() {
                     jQuery.post(ajaxurl, { action: \'wpbt_save_component\' , projectid: jQuery(\'#wpbt-add-new-component-form-project-id\').val(), title: jQuery(\'#wpbt-add-new-component-form-title\').val(),  desc: jQuery(\'#wpbt-add-new-component-form-description\').val() }, function(data) {
-                        jQuery("<div id=\"wpbt_component_"+data+"\"><img src=\"'.plugins_url().'/wp-bug-tracktor/images/x_alt_24x24.png\" style=\"cursor:pointer;margin:4px;float:left;\" onclick=\"if ( confirm(\''.__('Are you sure you wish to delete this component?', 'wpbugtracktor').'\') ) { jQuery.post( ajaxurl+\'?action=wpbt_delete_component\', { primkey: "+data+"}, function(data) { jQuery(\'#wpbt_component_"+data+"\').remove(); });  }\" /> <div class=\"edit\" id=\"componentTitle_"+data+"\" style=\"float:left;\">"+jQuery(\'#wpbt-add-new-component-form-title\').val()+"</div> <br /><span class=\"edit\" id=\"componentDescription_"+data+"\" style=\"font-size:0.8em;\">"+jQuery(\'#wpbt-add-new-component-form-description\').val()+"</span><br /><br /></div>").appendTo("#wpbt_components_project_" + jQuery(\'#wpbt-add-new-component-form-project-id\').val());
+                        jQuery("<div id=\"wpbt_component_"+data+"\"><img src=\"'.plugins_url().'/wpbugtracktor/images/x_alt_24x24.png\" style=\"cursor:pointer;margin:4px;float:left;\" onclick=\"if ( confirm(\''.__('Are you sure you wish to delete this component?', 'wpbugtracktor').'\') ) { jQuery.post( ajaxurl+\'?action=wpbt_delete_component\', { primkey: "+data+"}, function(data) { jQuery(\'#wpbt_component_"+data+"\').remove(); });  }\" /> <div class=\"edit\" id=\"componentTitle_"+data+"\" style=\"float:left;\">"+jQuery(\'#wpbt-add-new-component-form-title\').val()+"</div> <br /><span class=\"edit\" id=\"componentDescription_"+data+"\" style=\"font-size:0.8em;\">"+jQuery(\'#wpbt-add-new-component-form-description\').val()+"</span><br /><br /></div>").appendTo("#wpbt_components_project_" + jQuery(\'#wpbt-add-new-component-form-project-id\').val());
                         jQuery(\'#wpbt-add-new-component-form-project-id\').val(\'0\');
                         jQuery(\'#wpbt-add-new-component-form-title\').val(\'\');
                         jQuery(\'#wpbt-add-new-component-form-description\').val(\'\'); 
@@ -176,7 +176,7 @@ if(!function_exists('wpBugTracktorAdminPageEditProjects')) {
                         <tr><td>'.__('Component Name/Title', 'wpbugtracktor').'</td><td><input type="text" value="" id="wpbt-add-new-component-form-title" /></td></tr>
                         <tr><td>'.__('Description', 'wpbugtracktor').'</td><td><input type="text" value="" id="wpbt-add-new-component-form-description" /></td></tr>
                       </table>
-                      <br /><a href="#" class="button-secondary" onclick="wpbtSaveNewComponent();return false;" style="float:right;"><img src="'.plugins_url().'/wp-bug-tracktor/images/buttons_19.png" alt="" style="position:relative;top:4px;" /> '.__('Save New Component', 'wpbugtracktor').'</a>
+                      <br /><a href="#" class="button-secondary" onclick="wpbtSaveNewComponent();return false;" style="float:right;"><img src="'.plugins_url().'/wpbugtracktor/images/buttons_19.png" alt="" style="position:relative;top:4px;" /> '.__('Save New Component', 'wpbugtracktor').'</a>
                       </form>
              </div>
         </div>
@@ -197,13 +197,13 @@ if(!function_exists('wpBugTracktorAdminPageEditProjects')) {
             global $user_info;
             $user_info = get_userdata($wpbtProject['owner_id']);
             
-            echo '<tr id="wpbt_project_'.$wpbtProject['primkey'] .'"><td><img src="'.plugins_url().'/wp-bug-tracktor/images/x_alt_24x24.png" style="cursor:pointer;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this project?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_project\', { primkey: '.$wpbtProject['primkey'] .'}, function(data) { jQuery(\'#wpbt_project_'.$wpbtProject['primkey'] .'\').remove(); });  }" /> '.$wpbtProject['primkey'] .'</td><td class="wpbt-edit" id="title_'.$wpbtProject['primkey'] .'">'. $wpbtProject['title'] .'</td><td class="wpbt-edit" id="description_'.$wpbtProject['primkey'] .'">'.  $wpbtProject['description'] .'</td><td class="wpbt-edit" id="prefix_'.$wpbtProject['primkey'] .'">'.  $wpbtProject['project_prefix'] .'</td><td class="wpbt-edit-user"  id="owner_'.$wpbtProject['primkey'] .'">'.  $user_info->user_login . '</td><td>';
+            echo '<tr id="wpbt_project_'.$wpbtProject['primkey'] .'"><td><img src="'.plugins_url().'/wpbugtracktor/images/x_alt_24x24.png" style="cursor:pointer;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this project?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_project\', { primkey: '.$wpbtProject['primkey'] .'}, function(data) { jQuery(\'#wpbt_project_'.$wpbtProject['primkey'] .'\').remove(); });  }" /> '.$wpbtProject['primkey'] .'</td><td class="wpbt-edit" id="title_'.$wpbtProject['primkey'] .'">'. $wpbtProject['title'] .'</td><td class="wpbt-edit" id="description_'.$wpbtProject['primkey'] .'">'.  $wpbtProject['description'] .'</td><td class="wpbt-edit" id="prefix_'.$wpbtProject['primkey'] .'">'.  $wpbtProject['project_prefix'] .'</td><td class="wpbt-edit-user"  id="owner_'.$wpbtProject['primkey'] .'">'.  $user_info->user_login . '</td><td>';
             $componentresults = $wpdb->get_results("SELECT * FROM `{$wpdb->prefix}wpbugtracktor_components` WHERE `project_id`='{$wpbtProject['primkey']}';",ARRAY_A);
             add_thickbox();
-            echo '<a href="#TB_inline?width=500&height=400&inlineId=wpbt-add-new-component-content-id" class="thickbox button-secondary" onclick="jQuery(\'#wpbt-add-new-component-form-project-id\').val(\''.$wpbtProject['primkey'].'\');"><img src="'.plugins_url().'/wp-bug-tracktor/images/buttons_19.png" alt="" style="position:relative;top:4px;" /> '.__('Add New Component to this Project', 'wpbugtracktor').'</a><br /><br /><div id="wpbt_components_project_'.$wpbtProject['primkey'] .'">';
+            echo '<a href="#TB_inline?width=500&height=400&inlineId=wpbt-add-new-component-content-id" class="thickbox button-secondary" onclick="jQuery(\'#wpbt-add-new-component-form-project-id\').val(\''.$wpbtProject['primkey'].'\');"><img src="'.plugins_url().'/wpbugtracktor/images/buttons_19.png" alt="" style="position:relative;top:4px;" /> '.__('Add New Component to this Project', 'wpbugtracktor').'</a><br /><br /><div id="wpbt_components_project_'.$wpbtProject['primkey'] .'">';
             if(@isset($componentresults[0]['primkey'])) {
                 foreach($componentresults as $componentresult) {
-                    echo '<div id="wpbt_component_'.$componentresult['primkey'].'"><img src="'.plugins_url().'/wp-bug-tracktor/images/x_alt_24x24.png" style="cursor:pointer;margin:4px;float:left;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this component?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_component\', { primkey: '.$componentresult['primkey'] .'}, function(data) { jQuery(\'#wpbt_component_'.$componentresult['primkey'] .'\').remove(); });  }" /> ';
+                    echo '<div id="wpbt_component_'.$componentresult['primkey'].'"><img src="'.plugins_url().'/wpbugtracktor/images/x_alt_24x24.png" style="cursor:pointer;margin:4px;float:left;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this component?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_component\', { primkey: '.$componentresult['primkey'] .'}, function(data) { jQuery(\'#wpbt_component_'.$componentresult['primkey'] .'\').remove(); });  }" /> ';
                     echo '<div class="wpbt-edit" id="componentTitle_'.$componentresult['primkey'].'" style="float:left;">'.$componentresult['title'] . '</div><br /><span style="font-size:0.8em;" class="wpbt-edit" id="componentDescription_'.$componentresult['primkey'].'">'.$componentresult['description'].'</span><br /><br /></div>';
                 }
             }
@@ -276,13 +276,13 @@ if(!function_exists('wpBugTracktorAdminPageVersions')) {
                 display:block;
                 width:20px;
                 height:20px;
-                background:transparent url('.plugins_url().'/wp-bug-tracktor/images/prev.png) no-repeat scroll center center;
+                background:transparent url('.plugins_url().'/wpbugtracktor/images/prev.png) no-repeat scroll center center;
                 float:left;
                 cursor:pointer;
             }
 
             #calnext {
-                background-image:url('.plugins_url().'/wp-bug-tracktor/images/next.png);
+                background-image:url('.plugins_url().'/wpbugtracktor/images/next.png);
                 float:right;
             }
 
@@ -581,7 +581,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                             "fnDrawCallback": function () {
                             
                                 jQuery(".wpbt-edit").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -596,7 +596,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
 
                                 jQuery(".wpbt-edit-type").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -615,7 +615,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
                                 
                                 jQuery(".wpbt-edit-severity").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -634,7 +634,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
                                 
                                 jQuery(".wpbt-edit-version").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -660,7 +660,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
 
                                 jQuery(".wpbt-edit-component").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -686,7 +686,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
 
                                 jQuery(".wpbt-edit-project").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -712,7 +712,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
 
                                 jQuery(".wpbt-edit-user").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();
@@ -739,7 +739,7 @@ if(!function_exists('wpBugTracktorAdminPageIssues')) {
                                 });
 
                                 jQuery(".wpbt-edit-admin-user").editable(ajaxurl+"?action=wpbt_edit_issue", {
-                                    "indicator" : "<img src=\\"'. plugins_url().'/wp-bug-tracktor/images/loader.gif\\">",
+                                    "indicator" : "<img src=\\"'. plugins_url().'/wpbugtracktor/images/loader.gif\\">",
                                     "callback": function( sValue, y ) {
                                         uTable.fnAdjustColumnSizing();
                                         uTable.fnDraw();

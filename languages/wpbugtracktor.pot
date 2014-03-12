@@ -169,7 +169,7 @@ msgstr ""
 
 #: php/admin/adminpages.php:18
 msgid ""
-"wp-Bug-Tracktor is an open source issue tracking solution for Wordpress.  "
+"wpbugtracktor is an open source issue tracking solution for Wordpress.  "
 "The software is fresh out the oven, and really not ready for production.  "
 "This is early beta software.  As in, we haven't even finished implementing "
 "all of our basic features yet.  Don't worry, we're going to take care of "

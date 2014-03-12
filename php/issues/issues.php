@@ -392,8 +392,8 @@ if(!function_exists('wpBugTracktorReportAnIssueStep1')) {
         echo '<p class="wpBugTracktorReportAnIssueStep1">';
         _e('Report a new issue:', 'wpbugtracktor');
         echo '</p>';
-        echo '<button class="wpBugTracktorReportAnIssueButtons" id="wpBugTracktorReportAnIssueBug" onclick="wpBugTracktorReport(\'bug\');"><img src="'.plugins_url().'/wp-bug-tracktor/images/sm-bug.png" alt="" id="wpBugTracktorReportAnIssueBugImage" /> '.__('Bug/Regression', 'wpbugtracktor').'</button>';
-        echo '<button class="wpBugTracktorReportAnIssueButtons" id="wpBugTracktorReportAnIssueFeatureRequest" onclick="wpBugTracktorReport(\'feature\');"><img src="'.plugins_url().'/wp-bug-tracktor/images/lightbulb.png" alt="" id="wpBugTracktorReportAnIssueFeatureRequestImage" /> '.__('Feature Request, Enhancement, or Idea', 'wpbugtracktor').'</button>';
+        echo '<button class="wpBugTracktorReportAnIssueButtons" id="wpBugTracktorReportAnIssueBug" onclick="wpBugTracktorReport(\'bug\');"><img src="'.plugins_url().'/wpbugtracktor/images/sm-bug.png" alt="" id="wpBugTracktorReportAnIssueBugImage" /> '.__('Bug/Regression', 'wpbugtracktor').'</button>';
+        echo '<button class="wpBugTracktorReportAnIssueButtons" id="wpBugTracktorReportAnIssueFeatureRequest" onclick="wpBugTracktorReport(\'feature\');"><img src="'.plugins_url().'/wpbugtracktor/images/lightbulb.png" alt="" id="wpBugTracktorReportAnIssueFeatureRequestImage" /> '.__('Feature Request, Enhancement, or Idea', 'wpbugtracktor').'</button>';
         echo '<div id="wpBugTracktorReport" style="display:none;">
                 <form id="wpBugTracktorReportForm" method="post" action="">
                     <label class="wpBugTracktorFormLabel">'.__('Issue Type', 'wpbugtracktor').':
@@ -443,11 +443,11 @@ if(!function_exists('wpBugTracktorReportAnIssueStep1')) {
                     if((@extension_loaded('gd') && @function_exists('gd_info') && wpbtGdCheck())) {
                         echo '
 
-                                <label class="wpBugTracktorFormLabel">'.__('CAPTCHA', 'wpbugtracktor').': <img id="wpbt-captcha" src="'.plugins_url().'/wp-bug-tracktor/php/securimage/securimage_show.php?sid='. md5(uniqid()) .'" alt="'.__('CAPTCHA Image', 'wpbugtracktor').'" /><br />
-                                <object type="application/x-shockwave-flash" data="'.plugins_url().'/wp-bug-tracktor/php/securimage/securimage_play.swf?bgcol=#ffffff&amp;icon_file='.plugins_url().'/wp-bug-tracktor/php/securimage/images/audio_icon.png&amp;audio_file='.plugins_url().'/wp-bug-tracktor/php/securimage/securimage_play.php" height="32" width="32">
-                                 <param name="movie" value="'.plugins_url().'/wp-bug-tracktor/php/securimage/securimage_play.swf?bgcol=#ffffff&amp;icon_file='.plugins_url().'/wp-bug-tracktor/php/securimage/images/audio_icon.png&amp;audio_file=./securimage_play.php" />
+                                <label class="wpBugTracktorFormLabel">'.__('CAPTCHA', 'wpbugtracktor').': <img id="wpbt-captcha" src="'.plugins_url().'/wpbugtracktor/php/securimage/securimage_show.php?sid='. md5(uniqid()) .'" alt="'.__('CAPTCHA Image', 'wpbugtracktor').'" /><br />
+                                <object type="application/x-shockwave-flash" data="'.plugins_url().'/wpbugtracktor/php/securimage/securimage_play.swf?bgcol=#ffffff&amp;icon_file='.plugins_url().'/wpbugtracktor/php/securimage/images/audio_icon.png&amp;audio_file='.plugins_url().'/wpbugtracktor/php/securimage/securimage_play.php" height="32" width="32">
+                                 <param name="movie" value="'.plugins_url().'/wpbugtracktor/php/securimage/securimage_play.swf?bgcol=#ffffff&amp;icon_file='.plugins_url().'/wpbugtracktor/php/securimage/images/audio_icon.png&amp;audio_file=./securimage_play.php" />
                                  </object>                                    
-                                <input type="text" id="wpBugTracktorReportCaptcha" name="wpBugTracktorCaptcha" size="10" maxlength="6" /> <a href="#" onclick="document.getElementById(\'wpbt-captcha\').src = \''.plugins_url().'/wp-bug-tracktor/php/securimage/securimage_show.php?sid=\' + Math.random(); return false">[ '.__('Different Image', 'wpbugtracktor').' ]</a><br />                          
+                                <input type="text" id="wpBugTracktorReportCaptcha" name="wpBugTracktorCaptcha" size="10" maxlength="6" /> <a href="#" onclick="document.getElementById(\'wpbt-captcha\').src = \''.plugins_url().'/wpbugtracktor/php/securimage/securimage_show.php?sid=\' + Math.random(); return false">[ '.__('Different Image', 'wpbugtracktor').' ]</a><br />                          
                         ';
                     }
                         echo ' 

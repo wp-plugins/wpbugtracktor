@@ -1,6 +1,6 @@
 <?php
 /**
- * This file handles all the wp-Bug-Tracktor admin only Ajax calls.
+ * This file handles all the wpbugtracktor admin only Ajax calls.
  */
 
 if(!function_exists('wpbtAjaxJSONIssues')) {
@@ -143,7 +143,7 @@ if(!function_exists('wpbtAjaxJSONIssues')) {
                     switch ($aColumns[$i]) {
 
                         case 'primkey':
-                            $row[] = '<div class="wpbt-edit-disabled">'.$aRow[$i].' <img src="'.plugins_url().'/wp-bug-tracktor/images/x_alt_24x24.png" style="cursor:pointer;margin:4px;float:left;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this issue?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_issue\', { primkey: '.$aRow[$i] .'}, function(data) { location.reload(); });  }" /> </div>';
+                            $row[] = '<div class="wpbt-edit-disabled">'.$aRow[$i].' <img src="'.plugins_url().'/wpbugtracktor/images/x_alt_24x24.png" style="cursor:pointer;margin:4px;float:left;" onclick="if ( confirm(\''.__('Are you sure you wish to delete this issue?', 'wpbugtracktor').'\') ) { jQuery.post(ajaxurl+\'?action=wpbt_delete_issue\', { primkey: '.$aRow[$i] .'}, function(data) { location.reload(); });  }" /> </div>';
                         break;
 
                         case 'reporter_id':

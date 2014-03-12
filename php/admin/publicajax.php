@@ -86,7 +86,7 @@ if(!function_exists('wpbtAjaxSaveIssue')) {
                     session_start();
                 }
 
-                @include_once(WP_PLUGIN_DIR.'/wp-bug-tracktor/php/securimage/securimage.php');
+                @include_once(WP_PLUGIN_DIR.'/wpbugtracktor/php/securimage/securimage.php');
                 @$securimage = new Securimage();
 
                 if (@$securimage->check($_POST['wpBugTracktorReportCaptcha']) == false && (@extension_loaded('gd') && @function_exists('gd_info') && wpbtGdCheck())) {

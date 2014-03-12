@@ -46,7 +46,7 @@ if (!function_exists('wpBugTracktorAdminHead')) {
         * Loads the appropriate CSS and Javascript for the admin panel
         */
     function wpBugTracktorAdminHead() {
-        wp_register_style('wpsc-table-jui', plugins_url() . '/wp-bug-tracktor/css/demo_table_jui.css');
+        wp_register_style('wpsc-table-jui', plugins_url() . '/wpbugtracktor/css/demo_table_jui.css');
         wp_enqueue_style('wpsc-table-jui');    
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-core');
@@ -59,13 +59,13 @@ if (!function_exists('wpBugTracktorAdminHead')) {
         wp_enqueue_script('jquery-ui-datepicker');
         wp_enqueue_script('jquery-ui-resizable');
         wp_enqueue_script('jquery-ui-dialog');
-        wp_enqueue_script('wpsc-jquery-datatables', plugins_url() . '/wp-bug-tracktor/js/jquery.dataTables.min.js');
-        wp_enqueue_script('wpsc-jeditable', plugins_url() . '/wp-bug-tracktor/js/jquery.jeditable.mini.js');
-        wp_enqueue_script('wpsc-jquerytools-dateinput', plugins_url() . '/wp-bug-tracktor/js/jquery.tools.dateinput.min.js');
-        wp_enqueue_script('wpscstraphael', plugins_url().'/wp-bug-tracktor/js/tufte-graph/raphael.js', array('jquery'), '1.3.2');
-        wp_enqueue_script('wpscstenumerable', plugins_url().'/wp-bug-tracktor/js/tufte-graph/jquery.enumerable.js', array('jquery'), '1.3.2');
-        wp_enqueue_script('wpscsttufte', plugins_url().'/wp-bug-tracktor/js/tufte-graph/jquery.tufte-graph.js', array('jquery'), '1.3.2');
-        wp_enqueue_style('tufte-admin-ui-css', plugins_url().'/wp-bug-tracktor/js/tufte-graph/tufte-graph.css', false, 2, false);        
+        wp_enqueue_script('wpsc-jquery-datatables', plugins_url() . '/wpbugtracktor/js/jquery.dataTables.min.js');
+        wp_enqueue_script('wpsc-jeditable', plugins_url() . '/wpbugtracktor/js/jquery.jeditable.mini.js');
+        wp_enqueue_script('wpsc-jquerytools-dateinput', plugins_url() . '/wpbugtracktor/js/jquery.tools.dateinput.min.js');
+        wp_enqueue_script('wpscstraphael', plugins_url().'/wpbugtracktor/js/tufte-graph/raphael.js', array('jquery'), '1.3.2');
+        wp_enqueue_script('wpscstenumerable', plugins_url().'/wpbugtracktor/js/tufte-graph/jquery.enumerable.js', array('jquery'), '1.3.2');
+        wp_enqueue_script('wpscsttufte', plugins_url().'/wpbugtracktor/js/tufte-graph/jquery.tufte-graph.js', array('jquery'), '1.3.2');
+        wp_enqueue_style('tufte-admin-ui-css', plugins_url().'/wpbugtracktor/js/tufte-graph/tufte-graph.css', false, 2, false);        
     }
 }
 
@@ -75,7 +75,7 @@ if (!function_exists('wpBugTracktorAdminPages')) {
         * The admin pages
         */
     function wpBugTracktorAdminPages() {
-        $mainPage = add_menu_page('wpBugTracktor - '.__('Open Source Issue Tracker','wpbugtracktor'), 'wpBugTracktor', 'manage_wpbugtracktor', 'wpbugtracktor-new-admin', 'wpBugTracktorAdminPageMain', plugins_url() . '/wp-bug-tracktor/images/bug.png');
+        $mainPage = add_menu_page('wpBugTracktor - '.__('Open Source Issue Tracker','wpbugtracktor'), 'wpBugTracktor', 'manage_wpbugtracktor', 'wpbugtracktor-new-admin', 'wpBugTracktorAdminPageMain', plugins_url() . '/wpbugtracktor/images/bug.png');
         $settingsPage = add_submenu_page('wpbugtracktor-new-admin', __('Configure Settings','wpbugtracktor').' - wpBugTracktor ', __('Configure Settings','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-settings', 'wpBugTracktorAdminPageSettings');
         $addNewProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Add New Project','wpbugtracktor').' - wpBugTracktor ', __('Add New Project','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-project', 'wpBugTracktorAdminPageAddNewProject');
         $editProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Edit Projects','wpbugtracktor').' - wpBugTracktor ', __('Edit Projects','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-edit-projects', 'wpBugTracktorAdminPageEditProjects');

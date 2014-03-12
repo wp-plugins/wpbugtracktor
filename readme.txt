@@ -4,7 +4,7 @@ Donate link: http://wpbugtracktor.com
 Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker
 Requires at least: 3.5.0
 Tested up to: 3.9
-Stable tag: 0.9.3
+Stable tag: 0.9.4
 
 The best native bug tracking and issue management system for Wordpress.
 
@@ -30,9 +30,9 @@ completes, Activate the plugin
 
 Or, if you want to install manually:
 
-1. Download the wp-bug-tracktor.zip file
+1. Download the wpbugtracktor.zip file
 1. Extract the zip file to your hard drive, using 7-zip or your archiver of choice.
-1. Upload the `/wp-bug-tracktor/` directory to the `/wp-content/plugins/` directory
+1. Upload the `/wpbugtracktor/` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Create a new page, call it something like "Bug Tracker"
 1. Visit the wpBugTracktor admin page and select a "mainpage" for wpBugTracktor to use, like the "Bug Tracker" page we told you to create in the last step
@@ -48,6 +48,9 @@ Or, if you want to install manually:
 
 
 == Changelog ==
+
+= 0.9.4 =
+* Fixed: Fatal error was fixed that caused new installs to not work due to the plugin's name not matching the folder names inside the source files
 
 = 0.9.3 =
 * Added: Created the /languages/ directory, added the wpbugtracktor.pot file, and added an init action hook to enable i18n support for wpbugtracktor
