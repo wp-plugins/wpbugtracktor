@@ -42,7 +42,9 @@ if(!function_exists('wpBugTracktorIsPublishedPage')) {
 
 if(!function_exists('wpBugTracktorGetComments')) {
     function wpBugTracktorGetComments($post_id, $status="all") {
-
+        
+        wpBugTracktorCheckAdminPermissions();
+        
         $output = '';
         
         if($status=='all') {
@@ -61,17 +63,17 @@ if(!function_exists('wpBugTracktorGetComments')) {
             $output .= '<table class="wpBugTracktorTable wpBugTracktorListCommentsTable">';
             foreach($comments as $comment) {
                 if ($comment->comment_approved == 0 ) {
-                    $comment_approval = __('Pending', 'wpbugtracktor') .'<br /><a href="'.wp_nonce_url(admin_url('comment.php?c='.$comment->comment_ID.'&action=approvecomment'), 'approve-comment_'.$comment->comment_ID).'">'.__('Approve', 'wpbugtracktor').'</a>';
+                    $comment_approval = '<a href="'.wp_nonce_url(admin_url('comment.php?c='.$comment->comment_ID.'&action=approvecomment'), 'approve-comment_'.$comment->comment_ID).'">'.__('Approve', 'wpbugtracktor').'</a>';
                 } elseif($comment->comment_approved == 1) {
-                    $comment_approval = __('Approved', 'wpbugtracktor') .'<br /><a href="'.wp_nonce_url(admin_url('comment.php?c='.$comment->comment_ID.'&action=unapprovecomment'), 'approve-comment_'.$comment->comment_ID).'">'.__('Unapprove', 'wpbugtracktor').'</a>';
+                    $comment_approval = '<a href="'.wp_nonce_url(admin_url('comment.php?c='.$comment->comment_ID.'&action=unapprovecomment'), 'approve-comment_'.$comment->comment_ID).'">'.__('Unapprove', 'wpbugtracktor').'</a>';
                 } elseif($comment->comment_approved == 'spam') {
-                    $comment_approval = __('Spam', 'wpbugtracktor') .'<br />';
+                    $comment_approval = __('Spam', 'wpbugtracktor') .'';
                 } else {
-                    $comment_approval = $comment->comment_approved .'<br />';
+                    $comment_approval = $comment->comment_approved;
                 }
                 
                 $comment_approval .= ' | <a href="'.admin_url('comment.php?action=editcomment&c='.$comment->comment_ID).'">'.__('Edit', 'wpbugtracktor') .'</a>';
-                $output .= '<tr class="wpBugTracktorListIssuesTablerow"><td class="wpBugTracktorListIssuesTablecell">'.$comment_approval.'</td><td class="wpBugTracktorListIssuesTablecell">'.$comment->comment_author.'</td><td class="wpBugTracktorListIssuesTablecell">'.$comment->comment_content.'</td></tr>';
+                $output .= '<tr class="wpBugTracktorListIssuesTablerow"><td class="wpBugTracktorListIssuesTablecell">'.get_avatar($comment, 32).'<br /><strong>'.$comment->comment_author.'</strong><br /><a href="mailto:'.$comment->comment_author_email.'">'.$comment->comment_author_email.'</a><br />'.$comment->comment_author_IP .'</td><td class="wpBugTracktorListIssuesTablecell">'.$comment->comment_content.'<br /><br />'.$comment_approval.'</td></tr>';
             }   
             $output .= '</table>';
             
@@ -82,12 +84,106 @@ if(!function_exists('wpBugTracktorGetComments')) {
 }
 
 if(!function_exists('wpBugTracktorViewPublicIssues')) {
-    function wpBugTracktorViewPublicIssues($primkey=0, $isadminpanel=false) {
+    /**
+     * 
+     * 
+     * @param integer $primkey
+     * @param boolean $isadminpanel
+     */
+    function wpBugTracktorViewPublicIssues() {
         $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');
 
         $primkey = intval($primkey);
         if($primkey==0) {
             $results = wpBugTracktorGetIssues();
+        } else {
+            $results = wpBugTracktorGetIssues('*', "WHERE `project_id`='{$primkey}' ORDER BY `project_id`, `status`, `type` ASC ;");
+        }
+        
+        if(@isset($results[0]['primkey'])) {
+            echo '<table class="wpBugTracktorTable wpBugTracktorListIssuesTable';
+           
+            echo '">';
+            echo '<thead class="wpBugTracktorListIssuesTableHead"><tr class="wpBugTracktorListIssuesTablerow"><th class="wpBugTracktorListIssuesTableHeader">'.__('ID #', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Issue Title', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Type', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Status', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Severity', 'wpbugtracktor').'</th>';
+
+            echo '</tr></thead><tbody class="wpBugTracktorListIssuesTableBody">';
+            
+            foreach($results as $result) {
+                
+                if (wpBugTracktorIsPublishedPage($result['primkey'])) {
+                    $permalink = '<a href="'.get_permalink($result['post_id']).'">'.$result['title'].'</a>';
+                } else {
+                    $permalink = $result['title'];
+                }
+                
+                switch (intval($result['type'])) {
+                    case 0:
+                        $type_name = __('Bug', 'wpbugtracktor');
+                    break;
+                    case 1:
+                        $type_name = __('Feature Request', 'wpbugtracktor');
+                    break;
+                    case 2:
+                        $type_name = __('Regression', 'wpbugtracktor');
+                    break;
+                    case 3:
+                        $type_name = __('Enhancement', 'wpbugtracktor');
+                    break;
+                    case 4:
+                        $type_name = __('Idea', 'wpbugtracktor');
+                    break;                    
+                }
+                
+                switch (intval($result['severity_priority'])) {
+                    case 0:
+                        $severity_name = __('Non-critical', 'wpbugtracktor');
+                    break;
+                    case 1:
+                        $severity_name = __('Low priority', 'wpbugtracktor');
+                    break;
+                    case 2:
+                        $severity_name = __('Medium', 'wpbugtracktor');
+                    break;
+                    case 3:
+                        $severity_name = __('Above Average', 'wpbugtracktor');
+                    break;
+                    case 4:
+                        $severity_name = __('Critical', 'wpbugtracktor');
+                    break;    
+                    case 5:
+                        $severity_name = __('Emergency', 'wpbugtracktor');
+                    break;                    
+                }                 
+                
+                echo '<tr class="wpBugTracktorListIssuesTablerow"><td class="wpBugTracktorListIssuesTablecell">'.$result['primkey'].'</td><td class="wpBugTracktorListIssuesTablecell">'.$permalink.'</td><td class="wpBugTracktorListIssuesTablecell">'.$type_name.'</td><td class="wpBugTracktorListIssuesTablecell">'.$result['status'].'</td><td class="wpBugTracktorListIssuesTablecell">'.$severity_name.'</td>';
+                echo '</tr>';
+            }
+            
+            echo '</tbody></table>';
+            
+        } else {
+            _e('There are no issues to display.', 'wpbugtracktor');
+        }       
+    }
+}
+
+
+if(!function_exists('wpBugTracktorViewAdminIssueComments')) {
+    /**
+     * 
+     * 
+     * @param integer $primkey
+     * @param boolean $isadminpanel
+     */
+    function wpBugTracktorViewAdminIssueComments($primkey=0, $isadminpanel=true) {
+        
+        wpBugTracktorCheckAdminPermissions();
+        
+        $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');
+
+        $primkey = intval($primkey);
+        if($primkey==0) {
+            $results = wpBugTracktorGetIssues('*', " ORDER BY `project_id`, `status`, `type` ASC ;");
         } else {
             $results = wpBugTracktorGetIssues('*', "WHERE `project_id`='{$primkey}' ORDER BY `project_id`, `status`, `type` ASC ;");
         }
@@ -100,7 +196,7 @@ if(!function_exists('wpBugTracktorViewPublicIssues')) {
             }
             
             echo '">';
-            echo '<thead class="wpBugTracktorListIssuesTableHead"><tr class="wpBugTracktorListIssuesTablerow"><th class="wpBugTracktorListIssuesTableHeader">'.__('ID #', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Issue Title', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Type', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Status', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Severity', 'wpbugtracktor').'</th>';
+            echo '<thead class="wpBugTracktorListIssuesTableHead"><tr class="wpBugTracktorListIssuesTablerow"><th class="wpBugTracktorListIssuesTableHeader">'.__('ID #', 'wpbugtracktor').'</th><th class="wpBugTracktorListIssuesTableHeader">'.__('Issue Title', 'wpbugtracktor').' <br /> '.__('Type', 'wpbugtracktor').' <br /> '.__('Status', 'wpbugtracktor').' <br /> '.__('Severity', 'wpbugtracktor').' </th>';
             if($isadminpanel) {
                 echo '<th class="wpBugTracktorListIssuesTableHeader">'.__('Comments', 'wpbugtracktor').'</th>';
             }
@@ -153,7 +249,7 @@ if(!function_exists('wpBugTracktorViewPublicIssues')) {
                     break;                    
                 }                 
                 
-                echo '<tr class="wpBugTracktorListIssuesTablerow"><td class="wpBugTracktorListIssuesTablecell">'.$result['primkey'].'</td><td class="wpBugTracktorListIssuesTablecell">'.$permalink.'</td><td class="wpBugTracktorListIssuesTablecell">'.$type_name.'</td><td class="wpBugTracktorListIssuesTablecell">'.$result['status'].'</td><td class="wpBugTracktorListIssuesTablecell">'.$severity_name.'</td>';
+                echo '<tr class="wpBugTracktorListIssuesTablerow"><td class="wpBugTracktorListIssuesTablecell">'.$result['primkey'].'</td><td class="wpBugTracktorListIssuesTablecell">'.$permalink.'<br /> '.$type_name.' <br /> '.$result['status'].' <br /> '.$severity_name.'</td>';
                 if($isadminpanel) {
                     echo '<td class="wpBugTracktorListIssuesTablecell">'.wpBugTracktorGetComments($result['post_id']).'</td>';
                 }
@@ -168,14 +264,16 @@ if(!function_exists('wpBugTracktorViewPublicIssues')) {
     }
 }
 
+
 if(!function_exists('wpBugTracktorReportAnIssueStep1')) {
+    /**
+     * @todo Move this inline javascript into separate .js files
+     */
     function wpBugTracktorReportAnIssueStep1() {
         $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');  
         echo '
             <script type="text/javascript">
             <!--
-
-    
 
                 function wpBugTracktorReport(typeOfReport) {
                     jQuery("#wpBugTracktorReport").fadeIn();

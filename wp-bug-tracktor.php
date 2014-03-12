@@ -3,7 +3,7 @@
 Plugin Name: wpBugTracktor - Bug & Issue Tracker - BETA
 Plugin URI: http://wpbugtracktor.com
 Description: <a href="http://wpbugtracktor.com" target="blank">wpBugTracktor</a> is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
-Version: 0.9.2
+Version: 0.9.3
 Author: wpStoreCart, LLC
 Author URI: http://wpbugtracktor.com
 License: LGPL
@@ -29,7 +29,7 @@ Boston, MA 02111-1307 USA
  * wpBugTracktor
  *
  * @package wpBugTracktor
- * @version 0.9.2
+ * @version 0.9.3
  * @author wpStoreCart, LLC <admin@wpstorecart.com>
  * @copyright Copyright &copy; 2012, 2013, 2014 wpStoreCart, LLC.  All rights reserved.
  * @link http://wpbugtracktor.com
@@ -37,12 +37,20 @@ Boston, MA 02111-1307 USA
 global $wpscbt_version, $wpscbt_version_int, $wpBugTracktorSettings;
 
 /* Global variables: */
-$wpscbt_version = '0.9.2';
-$wpscbt_version_int = 009002; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
+$wpscbt_version = '0.9.3';
+$wpscbt_version_int = 009003; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
 
 if(session_id() == '') {
     session_start();
 }
+
+/**
+ * Sets up wpBugTracktor to use multiple languages
+ */
+function wpBugTracktorLanguageInit() {
+    load_plugin_textdomain( 'wpbugtracktor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action('init', 'wpscLanguageInit');
 
 require_once(WP_PLUGIN_DIR . '/wp-bug-tracktor/php/installer/installer.php'); 
 register_activation_hook(__FILE__, 'wpscbtInstall'); 

@@ -487,7 +487,7 @@ if(!function_exists('wpBugTracktorAdminPageManageComments')) {
         $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');   
         wpBugTracktorAdminPageHeader();
         
-        wpBugTracktorViewPublicIssues(null, true);
+        wpBugTracktorViewAdminIssueComments(null, true);
     }
 }
 
