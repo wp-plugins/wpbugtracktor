@@ -1009,9 +1009,26 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
             $wpBugTracktorSettings->setAdminOptions();
         }
         
-        
-        
         $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');   
+        
+        if(@isset($_GET['createnewpage'])) {
+            if(trim($wpBugTracktorOptions['mainpage'])=='' && $_GET['createnewpage']=='true') {
+                $my_post = array();
+                $my_post['post_title'] = __('Bug Tracker', 'wpbugtracktor');
+                $my_post['post_type'] = 'page';
+                $my_post['post_content'] = '[wpbugtracktor]';
+                $my_post['post_status'] = 'publish';
+                $my_post['post_author'] = 1;
+
+                // Insert the PAGE into the WP database
+                $thePostID = wp_insert_post( $my_post );   
+                $_POST['mainpage'] = $thePostID;
+                $wpBugTracktorSettings->setAdminOptions();
+                $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions'); 
+            }
+        }
+        
+        
         wpBugTracktorAdminPageHeader();
         echo '
             
@@ -1052,7 +1069,7 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                                 ';
 
                                 if(trim($wpBugTracktorOptions['mainpage'])=='') {
-                                    echo ' &nbsp <span style="font-size:90%">'.__('wpBugTacktor can automatically create this page for you if you click this button: ','wpbugtracktor') .'</span> <a href="" class="button-secondary">'.__('Create My "Main Page"', 'wpbugtracktor').'</a>';
+                                    echo ' &nbsp <span style="font-size:90%">'.__('wpBugTacktor can automatically create this page for you if you click this button: ','wpbugtracktor') .'</span> <a href="admin.php?page=wpbugtracktor-new-settings&createnewpage=true" class="button-secondary">'.__('Create My "Main Page"', 'wpbugtracktor').'</a>';
                                 }    
 
                                 echo '

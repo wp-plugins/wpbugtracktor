@@ -3,8 +3,8 @@ Contributors: jquindlen
 Donate link: http://wpbugtracktor.com
 Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker
 Requires at least: 3.5.0
-Tested up to: 3.9
-Stable tag: 0.9.4
+Tested up to: 4.0
+Stable tag: 0.9.5
 
 The best native bug tracking and issue management system for Wordpress.
 
@@ -48,6 +48,9 @@ Or, if you want to install manually:
 
 
 == Changelog ==
+
+= 0.9.5 =
+* Fixed:  Creating a new page for the main page button works now
 
 = 0.9.4 =
 * Fixed: Fatal error was fixed that caused new installs to not work due to the plugin's name not matching the folder names inside the source files
