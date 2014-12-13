@@ -1,31 +1,29 @@
-=== wpBugTracktor - Bug & Issue Tracker - BETA ===
+=== IDB Bug Tracker ===
 Contributors: jquindlen
-Donate link: http://wpbugtracktor.com
-Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker
+Donate link: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
+Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker,wpBugTracktor,idbbugtracker
 Requires at least: 3.5.0
 Tested up to: 4.0
-Stable tag: 0.9.5
+Stable tag: 0.9.7
 
 The best native bug tracking and issue management system for Wordpress.
 
 == Description ==
 
-[wpBugTracktor](http://wpbugtracktor.com/ "wpBugTracktor") is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
-
-**The software is fresh out the oven, and really not ready for production. This is early beta software. As in, we haven't even finished implementing all of our basic features yet. Don't worry, we're going to take care of that very quickly. Within a month or two this software will be feature complete and ready for the good old 1.0 stable production release... at least that's that goal. You can help! Give us feedback, bug reports, feature requests, and any help or encouragement you can spare. Thanks for checking out our software; we hope you enjoy it!**
+[IDB Bug Tracker](http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker "IDB Bug Tracker") (formerly wpBugTracktor) is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
 
 It uses Wordpress pages, which keeps end users out of the dashboard area and allows you to use other comment plugins and solutions with this bug tracker.  Keep your bug tracker private, allow only certain users, all users, or even guests to report bugs.  Also optionally allows you to accept feature requests, enhancements, and ideas.
 
 The plugin is i18n ready and compatible (POT file included in the /languages/ directory) but we ask that you hold off translation efforts until version 1.0 is complete, because there is a lot more text that will be added from now until then, which means any translations done now would be incomplete.
 
-NOTE: This is NOT a support ticket plugin, this is bug tracking software.  However, we have also written a [free support ticket plugin](http://wpscsupporttickets.com/ "free support ticket plugin") called: wpsc Support Tickets.
+NOTE: This is NOT a support ticket plugin, this is bug tracking software.  However, we have also written a [free support ticket plugin](http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker "free support ticket plugin") called: IDB Support Tickets.
 
 == Installation ==
 
-For complete detail and initial configuration tutorials and documentation, please visit the [Installation Documentation](http://wpstorecart.com/wpBugTracktor/ "wpBugTracktor Installation")
+For complete detail and initial configuration tutorials and documentation, please visit the [Installation Documentation](http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker "wpBugTracktor Installation")
 
-The recommended way to install wpBugTracktor is to go into the Wordpress admin panel, and click on Add New under the 
-Plugins menu.  Search for wpBugTracktor, and then click on Install, then click Install Now.  Once the installation 
+The recommended way to install IDB Bug Tracker is to go into the Wordpress admin panel, and click on Add New under the 
+Plugins menu.  Search for IDB Bug Tracker or wpBugTracktor, and then click on Install, then click Install Now.  Once the installation 
 completes, Activate the plugin
 
 Or, if you want to install manually:
@@ -40,7 +38,7 @@ Or, if you want to install manually:
 == Frequently Asked Questions ==
 
 = I have questions, where do I get answers? =
-- http://wpbugtracktor.com
+- http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 
 == Screenshots ==
  
@@ -48,6 +46,12 @@ Or, if you want to install manually:
 
 
 == Changelog ==
+
+= 0.9.7 =
+* Updated: Rebranded and minor bug fix
+
+= 0.9.6 =
+* Updated: Versions and Components label no longer appears if there are no versions or components to select from when creating a ticket
 
 = 0.9.5 =
 * Fixed:  Creating a new page for the main page button works now

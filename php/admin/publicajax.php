@@ -158,13 +158,14 @@ if(!function_exists('wpbtAjaxListComponents')) {
         global $wpdb;
        $output = '';
 
-       $output .=  '<select class="wpBugTracktorFormSelect" name="wpBugTracktorReportComponentList" id="wpBugTracktorReportComponentList" ';
+       
        if(@isset($_POST['projectid'])) {
            @$projectid = intval($_POST['projectid']);    
            $results = $wpdb->get_results("SELECT * FROM `{$wpdb->prefix}wpbugtracktor_components` WHERE `project_id`='{$projectid}' ;", ARRAY_A);
 
            if(@isset($results[0]['primkey'])) {
-               $output .= '>';
+               $output .=  '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportComponentList">'.__('Component', 'wpbugtracktor').':<select class="wpBugTracktorFormSelect" id="wpBugTracktorReportComponentListSelect" name="wpBugTracktorReportComponentList" id="wpBugTracktorReportComponentList" ></label>';
+               
 
                foreach ($results as $result) {
                    $output .= '<option value="'.$result['primkey'].'">'.$result['title'].'</option>';
@@ -172,10 +173,10 @@ if(!function_exists('wpbtAjaxListComponents')) {
 
 
            } else {
-                   $output .= ' style="display:none;">';
+                   $output .= '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportComponentList"><select  class="wpBugTracktorFormSelect" name="wpBugTracktorReportComponentList" id="wpBugTracktorReportComponentListSelect" style="display:none;"></label>';
            }
         } else {
-            $output .= ' style="display:none;">';
+            $output .= '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportComponentList"><select  class="wpBugTracktorFormSelect" name="wpBugTracktorReportComponentList" id="wpBugTracktorReportComponentListSelect" style="display:none;"></label>';
         }
         $output .= '</select>';
 
@@ -201,14 +202,13 @@ if(!function_exists('wpbtAjaxListVersions')) {
 
         $output = '';
 
-
-        $output .=  '<select class="wpBugTracktorFormSelect" name="wpBugTracktorReportVersionList" id="wpBugTracktorReportVersionList" ';
         if(@isset($_POST['projectid'])) {
             @$projectid = intval($_POST['projectid']);    
             $results = $wpdb->get_results("SELECT * FROM `{$wpdb->prefix}wpbugtracktor_milestones` WHERE `project_id`='{$projectid}' ;", ARRAY_A);
 
             if(@isset($results[0]['primkey'])) {
-                $output .= '>';
+                $output .= '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportVersionList">'. __('Version', 'wpbugtracktor').':<select class="wpBugTracktorFormSelect" id="wpBugTracktorReportVersionListSelect" name="wpBugTracktorReportVersionList"  ></label>';
+                
 
                 foreach ($results as $result) {
                     $output .= '<option value="'.$result['primkey'].'">'.$result['version_number'].' ('.$result['title'].')</option>';
@@ -216,10 +216,10 @@ if(!function_exists('wpbtAjaxListVersions')) {
 
 
             } else {
-                    $output .= ' style="display:none;">';
+                    $output .= '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportVersionList"><select class="wpBugTracktorFormSelect" name="wpBugTracktorReportVersionList" id="wpBugTracktorReportVersionListSelect" style="display:none;"></label>';
             }
         } else {
-            $output .= ' style="display:none;">';
+            $output .= '<label class="wpBugTracktorFormLabel" id="wpBugTracktorReportVersionList"><select class="wpBugTracktorFormSelect" name="wpBugTracktorReportVersionList" id="wpBugTracktorReportVersionListSelect" style="display:none;"></label>';
         }
         $output .= '</select>';
 

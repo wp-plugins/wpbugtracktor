@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: wpBugTracktor - Bug & Issue Tracker - BETA
-Plugin URI: http://wpbugtracktor.com
-Description: <a href="http://wpbugtracktor.com" target="blank">wpBugTracktor</a> is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
-Version: 0.9.5
-Author: wpStoreCart, LLC
-Author URI: http://wpbugtracktor.com
+Plugin Name: IDB Bug Tracker
+Plugin URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
+Description: IDB Bug Tracker is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
+Version: 0.9.7
+Author: IndieDevBundle.com
+Author URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 License: LGPL
 Text Domain: wpbugtracktor
 */
 
 /*  
-Copyright 2012, 2013, 2014 wpStoreCart, LLC  (email : admin@wpstorecart.com)
+Copyright 2012, 2013, 2014 Jeff Quindlen  (email : blacklodgegames@gmail.com)
 
 This library is free software; you can redistribute it and/or modify it under the terms 
 of the GNU Lesser General Public License as published by the Free Software Foundation; 
@@ -26,19 +26,14 @@ Boston, MA 02111-1307 USA
 */
 
 /**
- * wpBugTracktor
+ * IDB Bug Tracker (formerly wpBugTracktor)
  *
- * @package wpBugTracktor
- * @version 0.9.5
- * @author wpStoreCart, LLC <admin@wpstorecart.com>
- * @copyright Copyright &copy; 2012, 2013, 2014 wpStoreCart, LLC.  All rights reserved.
- * @link http://wpbugtracktor.com
  */
 global $wpscbt_version, $wpscbt_version_int, $wpBugTracktorSettings;
 
 /* Global variables: */
-$wpscbt_version = '0.9.5';
-$wpscbt_version_int = 009005; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
+$wpscbt_version = '0.9.7';
+$wpscbt_version_int = 009007; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
 
 if(session_id() == '') {
     session_start();

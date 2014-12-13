@@ -3,7 +3,7 @@
 if(!function_exists('wpBugTracktorAdminPageHeader')) {
     function wpBugTracktorAdminPageHeader() {
         echo '
-        <img src="'.plugins_url().'/wpbugtracktor/images/logo.png" alt="wpBugTracktor" /><br />
+        <img src="'.plugins_url().'/wpbugtracktor/images/logo.png" alt="IDB Bug Tracker" /><br />
             ';
         wpBugTracktorCheckAdminPermissions();
     }
@@ -13,14 +13,27 @@ if(!function_exists('wpBugTracktorAdminPageMain')) {
     function wpBugTracktorAdminPageMain() {
         wpBugTracktorAdminPageHeader();
         echo '
-        <div style="padding:10px;font-size:1.7em;">
-            <h2>'.__('Welcome to Our BETA Test', 'wpbugtracktor').'</h2>
-            <table class="widefat"><tr><td>'.__('wpbugtracktor is an open source issue tracking solution for Wordpress.  The software is fresh out the oven, and really not ready for production.  This is early beta software.  As in, we haven\'t even finished implementing all of our basic features yet.  Don\'t worry, we\'re going to take care of that very quickly.  Within a month or two this software will be feature complete and ready for the good old 1.0 stable production release... at least that\'s that goal.  You can help!  Give us feedback, bug reports, feature requests, and any help or encouragement you can spare.  Thanks for checking out our software; we hope you enjoy it!', 'wpbugtracktor').'</td></tr></table>
-            <br />
-            <h2>'.__('Beta Test Feedback', 'wpbugtracktor').'</h2>
-            <table class="widefat"><tr><td><center><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=bug&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wpbugtracktor/images/bug_report.png" alt="" /><br /> '.__('Report a bug', 'wpbugtracktor').'</center></button></a><a href="http://wpbugtracktor.com/bug-tracker/?issue_tracker=feature&wpbt_project=5" target="_blank"><button> <center><img src="' . plugins_url() . '/wpbugtracktor/images/feature_request.png" alt="" /><br /> '.__('Feature request', 'wpbugtracktor').'</center></button></a></center></td></tr></table>
-            
-        </div>';
+        
+<div id="idb_bt_wrap">
+    <iframe class="idb_bt_site" src="http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker"></iframe>
+</div>
+
+<style type="text/css">
+
+#idb_bt_wrap {
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: orange;
+}
+.idb_bt_site{
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+        ';
     }
 }
 
@@ -1016,7 +1029,7 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                 $my_post = array();
                 $my_post['post_title'] = __('Bug Tracker', 'wpbugtracktor');
                 $my_post['post_type'] = 'page';
-                $my_post['post_content'] = '[wpbugtracktor]';
+                $my_post['post_content'] = '[idbbugtracker]';
                 $my_post['post_status'] = 'publish';
                 $my_post['post_author'] = 1;
 
@@ -1040,12 +1053,12 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                 <h1>'.__('Settings', 'wpbugtracktor').'</h1>
                 <table class="widefat">
                     <thead>
-                        <tr><th>'.__('Configure a Main Page To Show wpBugTracktor', 'wpbugtracktor').'</th></tr>
+                        <tr><th>'.__('Configure a Main Page To Show IDB Bug Tracker', 'wpbugtracktor').'</th></tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <p>'.__('This is your main wpBugTracktor parent page.  All other wpBugTracktor pages are children of this page.', 'wpbugtracktor').'  <i>'.__('This page requires the wpBugTracktor shortcode be inserted into it, like this:', 'wpbugtracktor').'</i> [wpbugtracktor]</p>
+                                <p>'.__('This is your main IDB Bug Tracker parent page.  All other IDB Bug Tracker pages are children of this page.', 'wpbugtracktor').'  <i>'.__('This page requires the IDB Bug Tracker shortcode be inserted into it, like this:', 'wpbugtracktor').'</i> [wpbugtracktor]</p>
                                 <select name="mainpage"> 
                                     <option value="">
                                                         ';
@@ -1069,7 +1082,7 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                                 ';
 
                                 if(trim($wpBugTracktorOptions['mainpage'])=='') {
-                                    echo ' &nbsp <span style="font-size:90%">'.__('wpBugTacktor can automatically create this page for you if you click this button: ','wpbugtracktor') .'</span> <a href="admin.php?page=wpbugtracktor-new-settings&createnewpage=true" class="button-secondary">'.__('Create My "Main Page"', 'wpbugtracktor').'</a>';
+                                    echo ' &nbsp <span style="font-size:90%">'.__('IDB Bug Tracker can automatically create this page for you if you click this button: ','wpbugtracktor') .'</span> <a href="admin.php?page=wpbugtracktor-new-settings&createnewpage=true" class="button-secondary">'.__('Create My "Main Page"', 'wpbugtracktor').'</a>';
                                 }    
 
                                 echo '
@@ -1080,7 +1093,7 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                 <br />
                 <table class="widefat">
                     <thead>
-                        <tr><th>'.__('Configure Who Can Administrate wpBugTracktor', 'wpbugtracktor').'</th></tr>
+                        <tr><th>'.__('Configure Who Can Administrate IDB Bug Tracker', 'wpbugtracktor').'</th></tr>
                     </thead>
                     <tbody>                
                         <tr>

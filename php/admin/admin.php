@@ -75,13 +75,13 @@ if (!function_exists('wpBugTracktorAdminPages')) {
         * The admin pages
         */
     function wpBugTracktorAdminPages() {
-        $mainPage = add_menu_page('wpBugTracktor - '.__('Open Source Issue Tracker','wpbugtracktor'), 'wpBugTracktor', 'manage_wpbugtracktor', 'wpbugtracktor-new-admin', 'wpBugTracktorAdminPageMain', plugins_url() . '/wpbugtracktor/images/bug.png');
-        $settingsPage = add_submenu_page('wpbugtracktor-new-admin', __('Configure Settings','wpbugtracktor').' - wpBugTracktor ', __('Configure Settings','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-settings', 'wpBugTracktorAdminPageSettings');
-        $addNewProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Add New Project','wpbugtracktor').' - wpBugTracktor ', __('Add New Project','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-project', 'wpBugTracktorAdminPageAddNewProject');
-        $editProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Edit Projects','wpbugtracktor').' - wpBugTracktor ', __('Edit Projects','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-edit-projects', 'wpBugTracktorAdminPageEditProjects');
-        $versionsPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Versions','wpbugtracktor').' - wpBugTracktor ', __('Manage Versions','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-edit-versions', 'wpBugTracktorAdminPageVersions');
-        $issuesPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Issues','wpbugtracktor').' - wpBugTracktor ', __('Manage Issues','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-issues', 'wpBugTracktorAdminPageIssues');
-        $manageIssuesPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Comments','wpbugtracktor').' - wpBugTracktor ', __('Manage Comments','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-manage-comments', 'wpBugTracktorAdminPageManageComments');
+        $mainPage = add_menu_page('wpBugTracktor - '.__('Open Source Issue Tracker','wpbugtracktor'), 'IDB Bug Tracker', 'manage_wpbugtracktor', 'wpbugtracktor-new-admin', 'wpBugTracktorAdminPageMain', plugins_url() . '/wpbugtracktor/images/bug.png');
+        $settingsPage = add_submenu_page('wpbugtracktor-new-admin', __('Configure Settings','wpbugtracktor').' - IDB Bug Tracker ', __('Configure Settings','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-settings', 'wpBugTracktorAdminPageSettings');
+        $addNewProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Add New Project','wpbugtracktor').' - IDB Bug Tracker ', __('Add New Project','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-new-project', 'wpBugTracktorAdminPageAddNewProject');
+        $editProjectPage = add_submenu_page('wpbugtracktor-new-admin', __('Edit Projects','wpbugtracktor').' - IDB Bug Tracker ', __('Edit Projects','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-edit-projects', 'wpBugTracktorAdminPageEditProjects');
+        $versionsPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Versions','wpbugtracktor').' - IDB Bug Tracker ', __('Manage Versions','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-edit-versions', 'wpBugTracktorAdminPageVersions');
+        $issuesPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Issues','wpbugtracktor').' - IDB Bug Tracker ', __('Manage Issues','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-issues', 'wpBugTracktorAdminPageIssues');
+        $manageIssuesPage = add_submenu_page('wpbugtracktor-new-admin', __('Manage Comments','wpbugtracktor').' - IDB Bug Tracker ', __('Manage Comments','wpbugtracktor'), 'manage_wpbugtracktor', 'wpbugtracktor-manage-comments', 'wpBugTracktorAdminPageManageComments');
         add_action('admin_head-' . $mainPage, 'wpBugTracktorAdminHead');
         add_action('admin_head-' . $settingsPage, 'wpBugTracktorAdminHead');
         add_action('admin_head-' . $addNewProjectPage, 'wpBugTracktorAdminHead');

@@ -27,7 +27,7 @@ if(!function_exists('wpBugTracktorIsPublishedPage')) {
     function wpBugTracktorIsPublishedPage($issue_id) {
         global $wpdb;
         $result = $wpdb->get_results("SELECT `post_id` FROM `{$wpdb->prefix}wpbugtracktor_issues` WHERE `primkey`='{$issue_id}'; ", ARRAY_A);
-        if(isset($result[0]['post_id'])) {
+        if(@isset($result[0]['post_id'])) {
             $wpsc_check_draft_page = get_page($result[0]['post_id']);  
             if($wpsc_check_draft_page->post_status == 'publish') {
                 return true;
@@ -326,8 +326,8 @@ if(!function_exists('wpBugTracktorReportAnIssueStep1')) {
                     jQuery.post("'.admin_url( 'admin-ajax.php' ).'?action=wpbt_save_issue", {
                         wpBugTracktorReportIssueType: jQuery("#wpBugTracktorReportAnIssueType").val(),
                         wpBugTracktorReportIssueProject: jQuery("#wpBugTracktorReportAnIssueProject").val(),
-                        wpBugTracktorReportComponentList: jQuery("#wpBugTracktorReportComponentList").val(),
-                        wpBugTracktorReportVersionList: jQuery("#wpBugTracktorReportVersionList").val(),
+                        wpBugTracktorReportComponentList: jQuery("#wpBugTracktorReportComponentListSelect").val(),
+                        wpBugTracktorReportVersionList: jQuery("#wpBugTracktorReportVersionListSelect").val(),
                         wpBugTracktorReportFormTitle: jQuery("#wpBugTracktorReportFormTitle").val(),
                         wpBugTracktorReportFormDescription: jQuery("#wpBugTracktorReportFormDescription").val(),
                         wpBugTracktorReportFormEmail: jQuery("#wpBugTracktorReportFormEmail").val(),
@@ -418,14 +418,14 @@ if(!function_exists('wpBugTracktorReportAnIssueStep1')) {
                         echo '
                         </select>
                     </label>  
-                    <label class="wpBugTracktorFormLabel" id="wpBugTracktorReportVersion">'.__('Version', 'wpbugtracktor').':
+                    <div id="wpBugTracktorReportVersion"><label class="wpBugTracktorFormLabel">
                         <select class="wpBugTracktorFormSelect" name="wpBugTracktorReportVersionList" id="wpBugTracktorReportVersionList">
                         </select>
-                    </label>                    
-                    <label class="wpBugTracktorFormLabel" id="wpBugTracktorReportComponent">'.__('Component', 'wpbugtracktor').':
+                    </label></div>                    
+                    <div id="wpBugTracktorReportComponent"><label class="wpBugTracktorFormLabel">
                         <select class="wpBugTracktorFormSelect" name="wpBugTracktorReportComponentList" id="wpBugTracktorReportComponentList">
                         </select>
-                    </label>     
+                    </label></div>     
                     <label class="wpBugTracktorFormLabel">'.__('Severity', 'wpbugtracktor').':
                         <select class="wpBugTracktorFormSelect" name="wpBugTracktorReportSeverity" id="wpBugTracktorReportSeverity">
                             <option value="0">'.__('Non-critical', 'wpbugtracktor').'</option>
