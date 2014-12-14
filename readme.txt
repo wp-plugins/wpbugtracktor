@@ -4,7 +4,7 @@ Donate link: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbug
 Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker,wpBugTracktor,idbbugtracker
 Requires at least: 3.5.0
 Tested up to: 4.0
-Stable tag: 0.9.7
+Stable tag: 0.9.8
 
 The best native bug tracking and issue management system for Wordpress.
 
@@ -46,6 +46,9 @@ Or, if you want to install manually:
 
 
 == Changelog ==
+
+= 0.9.8 =
+* Fixed: Can now successfully delete versions
 
 = 0.9.7 =
 * Updated: Rebranded and minor bug fix

@@ -409,10 +409,21 @@ if(!function_exists('wpBugTracktorAdminPageVersions')) {
             function wpbtEditReleases() {
                 jQuery(".wpbt_edit_primkey").each(function( index ) {
                     jQuery.post(ajaxurl+"?action=wpbt_save_milestone", { wpbt_primkey:jQuery(this).val(), wpbt_version: jQuery(\'#wpbt_version_\'+jQuery(this).val()).val(), wpbt_codename: jQuery(\'#wpbt_codename_\'+jQuery(this).val()).val(), wpbt_desc: jQuery(\'#wpbt_desc_\'+jQuery(this).val()).val(), wpbt_project: jQuery(\'#wpbt_project_\'+jQuery(this).val()).val(), wpbt_isreleased: jQuery(\'#wpbt_isreleased_\'+jQuery(this).val()).val(), wpbt_startdate: jQuery(\'#wpbt_startdate_\'+jQuery(this).val()).val(), wpbt_releasedate: jQuery(\'#wpbt_releasedate_\'+jQuery(this).val()).val() }, function(data) {
-                         
+                         alert("'.__('Edited successfully.','wpbugtracktor').'");
                     });                
                 });
-                alert("'.__('Save successfully.','wpbugtracktor').'");
+                
+                return false;
+            }
+
+            function wpbtDeleteVersion(versionkeytodelete) {
+            
+                if ( window.confirm("'.__('Are you sure you want to delete this?','wpbugtracktor').'") == true ) {
+                    jQuery.post(ajaxurl+"?action=wpbt_delete_version", { wpbt_primkey:versionkeytodelete }, function(data) {
+                         jQuery("#wpbt_row_"+versionkeytodelete).fadeOut();
+                    });       
+                 }
+                 
                 return false;
             }
 
@@ -461,7 +472,7 @@ if(!function_exists('wpBugTracktorAdminPageVersions')) {
        $msresults = $wpdb->get_results("SELECT * FROM `{$wpdb->prefix}wpbugtracktor_milestones` ORDER BY `project_id`, `version_number`;",ARRAY_A);
        if(@isset($msresults[0]['primkey'])) {
            foreach ($msresults as $msresult) {
-               echo '<tr><td><form name="wpbt_edit_release_'.$msresult['primkey'].'" class="wpbt_edit_release_form" method="post" onsubmit="return false;"><input type="hidden" name="wpbt_edit_primkey" class="wpbt_edit_primkey" value="'.$msresult['primkey'].'" /><input type="text" name="wpbt_version" id="wpbt_version_'.$msresult['primkey'].'" value="'.$msresult['version_number'].'"  style="width:70px;" /></td><td><input type="text" name="wpbt_codename" id="wpbt_codename_'.$msresult['primkey'].'" value="'.$msresult['title'].'"  /></td><td><input type="text" name="wpbt_desc" id="wpbt_desc_'.$msresult['primkey'].'" value="'.$msresult['description'].'"  /></td>';
+               echo '<tr id="wpbt_row_'.$msresult['primkey'].'"><td> <img src="'.plugins_url().'/wpbugtracktor/images/x_alt_24x24.png" style="cursor:pointer;margin:4px;float:left;" onclick="wpbtDeleteVersion('.$msresult['primkey'].');return false;" /> <form name="wpbt_edit_release_'.$msresult['primkey'].'" class="wpbt_edit_release_form" method="post" onsubmit="return false;"><input type="hidden" name="wpbt_edit_primkey" class="wpbt_edit_primkey" value="'.$msresult['primkey'].'" /><input type="text" name="wpbt_version" id="wpbt_version_'.$msresult['primkey'].'" value="'.$msresult['version_number'].'"  style="width:70px;" /></td><td><input type="text" name="wpbt_codename" id="wpbt_codename_'.$msresult['primkey'].'" value="'.$msresult['title'].'"  /></td><td><input type="text" name="wpbt_desc" id="wpbt_desc_'.$msresult['primkey'].'" value="'.$msresult['description'].'"  /></td>';
                     echo '<td>';
                     if(@isset($results[0]['title'])) {
                         echo '<select name="wpbt_project" id="wpbt_project_'.$msresult['primkey'].'">';

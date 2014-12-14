@@ -478,6 +478,25 @@ if(!function_exists('wpbtAjaxDeleteProject')) {
 add_action( 'wp_ajax_wpbt_delete_project', 'wpbtAjaxDeleteProject' );
 
 
+if(!function_exists('wpbtAjaxDeleteVersion')) {
+    function wpbtAjaxDeleteVersion() {
+        global $wpdb;
+        wpBugTracktorCheckAdminPermissions();
+
+        $id = intval($_POST['wpbt_primkey']);
+
+        $sql = "DELETE FROM `{$wpdb->prefix}wpbugtracktor_milestones` WHERE `primkey`='{$id}'; ";
+
+        if($sql!=null) {
+            $wpdb->query($sql);
+        } 
+        die();
+    }
+}
+add_action( 'wp_ajax_wpbt_delete_version', 'wpbtAjaxDeleteVersion' );
+
+
+
 if(!function_exists('wpbtAjaxSaveComponent')) {
     /**
      * Save Components

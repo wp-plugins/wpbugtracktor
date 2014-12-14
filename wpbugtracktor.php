@@ -3,7 +3,7 @@
 Plugin Name: IDB Bug Tracker
 Plugin URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 Description: IDB Bug Tracker is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
-Version: 0.9.7
+Version: 0.9.8
 Author: IndieDevBundle.com
 Author URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 License: LGPL
@@ -32,8 +32,8 @@ Boston, MA 02111-1307 USA
 global $wpscbt_version, $wpscbt_version_int, $wpBugTracktorSettings;
 
 /* Global variables: */
-$wpscbt_version = '0.9.7';
-$wpscbt_version_int = 009007; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
+$wpscbt_version = '0.9.8';
+$wpscbt_version_int = 009008; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
 
 if(session_id() == '') {
     session_start();
@@ -62,4 +62,5 @@ require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/admin/publicajax.php');
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/widgets/widgets.php'); 
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/shortcodes/shortcodes.php'); 
 wpBugTracktorAssignCapabilities();
+
 ?>
