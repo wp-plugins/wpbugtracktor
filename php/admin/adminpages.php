@@ -1069,7 +1069,7 @@ if(!function_exists('wpBugTracktorAdminPageSettings')) {
                     <tbody>
                         <tr>
                             <td>
-                                <p>'.__('This is your main IDB Bug Tracker parent page.  All other IDB Bug Tracker pages are children of this page.', 'wpbugtracktor').'  <i>'.__('This page requires the IDB Bug Tracker shortcode be inserted into it, like this:', 'wpbugtracktor').'</i> [wpbugtracktor]</p>
+                                <p>'.__('This is your main IDB Bug Tracker parent page.  All other IDB Bug Tracker pages are children of this page.', 'wpbugtracktor').'  <i>'.__('This page requires the IDB Bug Tracker shortcode be inserted into it, like this:', 'wpbugtracktor').'</i> [idbbugtracker]</p>
                                 <select name="mainpage"> 
                                     <option value="">
                                                         ';
