@@ -81,7 +81,7 @@ if(!function_exists('wpBugTracktorMainShortcode')) {
 
 
 
-
+add_shortcode('idbbugtracker', 'wpBugTracktorMainShortcode');
 add_shortcode('wpbugtracktor', 'wpBugTracktorMainShortcode');
 
 
