@@ -60,7 +60,7 @@ if(!function_exists('wpBugTracktorGetComments')) {
 
         if ($comments) {
         
-            $output .= '<table class="wpBugTracktorTable wpBugTracktorListCommentsTable">';
+            $output .= '<table class="widefat wpBugTracktorTable wpBugTracktorListCommentsTable">';
             foreach($comments as $comment) {
                 if ($comment->comment_approved == 0 ) {
                     $comment_approval = '<a href="'.wp_nonce_url(admin_url('comment.php?c='.$comment->comment_ID.'&action=approvecomment'), 'approve-comment_'.$comment->comment_ID).'">'.__('Approve', 'wpbugtracktor').'</a>';
