@@ -4,7 +4,7 @@ Donate link: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbug
 Tags: bug,track,bug tracker,issue,bugs,issues,projects,feature request,tracker,wpBugTracktor,idbbugtracker
 Requires at least: 3.5.0
 Tested up to: 4.2
-Stable tag: 0.9.11
+Stable tag: 0.9.12
 
 The best native bug tracking and issue management system for Wordpress.
 
@@ -14,7 +14,9 @@ The best native bug tracking and issue management system for Wordpress.
 
 It uses Wordpress pages, which keeps end users out of the dashboard area and allows you to use other comment plugins and solutions with this bug tracker.  Keep your bug tracker private, allow only certain users, all users, or even guests to report bugs.  Also optionally allows you to accept feature requests, enhancements, and ideas.
 
-The plugin is i18n ready and compatible (POT file included in the /languages/ directory) but we ask that you hold off translation efforts until version 1.0 is complete, because there is a lot more text that will be added from now until then, which means any translations done now would be incomplete.
+The plugin is i18n ready and compatible (POT file included in the /languages/ directory)
+
+ * Hebrew (עִבְרִית) translation provided by http://atar4u.com/
 
 NOTE: This is NOT a support ticket plugin, this is bug tracking software.  However, we have also written a [free support ticket plugin](http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker "free support ticket plugin") called: IDB Support Tickets.
 
@@ -46,6 +48,9 @@ Or, if you want to install manually:
 
 
 == Changelog ==
+
+= 0.9.12 =
+ * Hebrew (עִבְרִית) translation provided by http://atar4u.com/
 
 = 0.9.11 =
 * Updated: Comments admin page adjusted to make it easier to tell what comments belong to which bug report.
