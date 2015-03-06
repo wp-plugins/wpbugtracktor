@@ -28,7 +28,7 @@ if(!function_exists('wpbtAjaxJSONIssues')) {
         $sLimit = "";
         if ( isset( $_POST['iDisplayStart'] ) && $_POST['iDisplayLength'] != '-1' )
         {
-                $sLimit = "LIMIT ".$wpdb->escape( $_POST['iDisplayStart'] ).", ".$wpdb->escape( $_POST['iDisplayLength'] );
+                $sLimit = "LIMIT ".esc_sql( $_POST['iDisplayStart'] ).", ".esc_sql( $_POST['iDisplayLength'] );
         }
 
 
@@ -43,7 +43,7 @@ if(!function_exists('wpbtAjaxJSONIssues')) {
                         if ( $_POST[ 'bSortable_'.intval($_POST['iSortCol_'.$i]) ] == "true" )
                         {
                                 $sOrder .= $aColumns[ intval( $_POST['iSortCol_'.$i] ) ]."
-                                        ".$wpdb->escape( $_POST['sSortDir_'.$i] ) .", ";
+                                        ".esc_sql( $_POST['sSortDir_'.$i] ) .", ";
                         }
                 }
 
@@ -67,7 +67,7 @@ if(!function_exists('wpbtAjaxJSONIssues')) {
                 $sWhere = "WHERE (";
                 for ( $i=0 ; $i<count($aColumns) ; $i++ )
                 {
-                        $sWhere .= $aColumns[$i]." LIKE '%".$wpdb->escape( $_POST['sSearch'] )."%' OR ";
+                        $sWhere .= $aColumns[$i]." LIKE '%".esc_sql( $_POST['sSearch'] )."%' OR ";
                 }
                 $sWhere = substr_replace( $sWhere, "", -3 );
                 $sWhere .= ')';
@@ -86,7 +86,7 @@ if(!function_exists('wpbtAjaxJSONIssues')) {
                         {
                                 $sWhere .= " AND ";
                         }
-                        $sWhere .= $aColumns[$i]." LIKE '%".$wpdb->escape($_POST['sSearch_'.$i])."%' ";
+                        $sWhere .= $aColumns[$i]." LIKE '%".esc_sql($_POST['sSearch_'.$i])."%' ";
                 }
         }
 
@@ -317,7 +317,7 @@ if(!function_exists('wpbtAjaxEditIssue')) {
 
         wpBugTracktorCheckAdminPermissions();
 
-        $value = $wpdb->escape($_POST['value']);
+        $value = esc_sql($_POST['value']);
         $col = intval($_POST['column']);
         $row_raw = $_POST['row_id'];
         $row = intval(str_replace('wpscid--', '', $row_raw ));
@@ -511,8 +511,8 @@ if(!function_exists('wpbtAjaxSaveComponent')) {
 
         @$wpbt_primkey = intval($_POST['wpbt_primkey']);
         $wpbt_projectid = intval($_POST['projectid']);
-        $wpbt_title = $wpdb->escape($_POST['title']);
-        $wpbt_desc = $wpdb->escape($_POST['desc']);
+        $wpbt_title = esc_sql($_POST['title']);
+        $wpbt_desc = esc_sql($_POST['desc']);
 
         if(@!isset($_POST['wpbt_primkey'])) {
             // Insert a new record
@@ -544,13 +544,13 @@ if(!function_exists('wpbtAjaxSaveMilestone')) {
         wpBugTracktorCheckAdminPermissions();
 
         @$wpbt_primkey = $_POST['wpbt_primkey'];
-        $wpbt_version = $wpdb->escape($_POST['wpbt_version']);
-        $wpbt_codename = $wpdb->escape($_POST['wpbt_codename']);
-        $wpbt_desc = $wpdb->escape($_POST['wpbt_desc']);
+        $wpbt_version = esc_sql($_POST['wpbt_version']);
+        $wpbt_codename = esc_sql($_POST['wpbt_codename']);
+        $wpbt_desc = esc_sql($_POST['wpbt_desc']);
         $wpbt_project = intval($_POST['wpbt_project']);
         $wpbt_isreleased = intval($_POST['wpbt_isreleased']);
-        $wpbt_startdate = $wpdb->escape($_POST['wpbt_startdate']);
-        $wpbt_releasedate = $wpdb->escape($_POST['wpbt_releasedate']);
+        $wpbt_startdate = esc_sql($_POST['wpbt_startdate']);
+        $wpbt_releasedate = esc_sql($_POST['wpbt_releasedate']);
 
         if(@!isset($_POST['wpbt_primkey'])) {
             // Insert a new record
@@ -666,7 +666,7 @@ if(!function_exists('wpbtAjaxSavePublish')) {
 
         wpBugTracktorCheckAdminPermissions();
 
-        @$wpBugTracktorPublish = $wpdb->escape($_POST['wpBugTracktorPublish']);
+        @$wpBugTracktorPublish = esc_sql($_POST['wpBugTracktorPublish']);
         @$wpBugTracktorPublishPageId = intval($_POST['wpBugTracktorPublishPageId']);
 
         $my_post = array();

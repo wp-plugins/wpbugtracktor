@@ -3,7 +3,7 @@
 Plugin Name: IDB Bug Tracker
 Plugin URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 Description: IDB Bug Tracker is a free, open source, and full featured bug tracking and issue management system built atop of Wordpress.
-Version: 0.9.12
+Version: 0.9.13
 Author: IndieDevBundle.com
 Author URI: http://indiedevbundle.com/app/idb-ultimate-wordpress-bundle/#idbbugtracker
 License: LGPL
@@ -32,8 +32,8 @@ Boston, MA 02111-1307 USA
 global $wpscbt_version, $wpscbt_version_int, $wpBugTracktorSettings;
 
 /* Global variables: */
-$wpscbt_version = '0.9.12';
-$wpscbt_version_int = 009012; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
+$wpscbt_version = '0.9.13';
+$wpscbt_version_int = 009013; // Mm_p__ which is 1 digit for Major, 2 for minor, and 3 digits for patch updates, so version 2.0.14 would be 200014
 
 if(session_id() == '') {
     session_start();
@@ -51,7 +51,7 @@ require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/installer/installer.php');
 register_activation_hook(__FILE__, 'wpscbtInstall'); 
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/actions/actions.php'); 
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/settings/settings.php'); 
-$wpBugTracktorSettings = new wpBugTracktorSettings(); // Initialize settings.  One the first run, this will set options
+$wpBugTracktorSettings = new wpBugTracktorSettings(); // Initialize settings.  On the first run, this will set options
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/projects/projects.php'); 
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/milestones/milestones.php'); 
 require_once(WP_PLUGIN_DIR . '/wpbugtracktor/php/issues/issues.php'); 

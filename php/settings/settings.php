@@ -132,18 +132,18 @@ if(!class_exists('wpBugTracktorSettings')) {
                     global $wpdb;
                             $wpBugTracktorOptions = get_option($this->adminOptionsName);
                             if (isset($_POST['mainpage'])) {
-                                    $wpBugTracktorOptions['mainpage'] = $wpdb->escape($_POST['mainpage']);
+                                    $wpBugTracktorOptions['mainpage'] = esc_sql($_POST['mainpage']);
                             }
                             if (isset($_POST['permission_to_report_issues'])) {
-                                    $wpBugTracktorOptions['permission_to_report_issues'] = $wpdb->escape($_POST['permission_to_report_issues']);
+                                    $wpBugTracktorOptions['permission_to_report_issues'] = esc_sql($_POST['permission_to_report_issues']);
                             } 	
                             if (isset($_POST['permission_to_comment'])) {
-                                    $wpBugTracktorOptions['permission_to_comment'] = $wpdb->escape($_POST['permission_to_comment']);
+                                    $wpBugTracktorOptions['permission_to_comment'] = esc_sql($_POST['permission_to_comment']);
                             } 	                            
 
                             if (isset($_POST['admin_capability'])) {
                                     global $wp_roles;
-                                    $wpBugTracktorOptions['admin_capability'] = $wpdb->escape($_POST['admin_capability']);
+                                    $wpBugTracktorOptions['admin_capability'] = esc_sql($_POST['admin_capability']);
                                     if($wpBugTracktorOptions['admin_capability']=='administrator') {
                                         $wp_roles->remove_cap( 'editor', 'manage_wpbugtracktor' );
                                         $wp_roles->remove_cap( 'author', 'manage_wpbugtracktor' );
@@ -170,7 +170,7 @@ if(!class_exists('wpBugTracktorSettings')) {
                             }
                             
                             if(@isset($_POST['wpBugTracktorStatus'])) { // Update options
-                                $wpBugTracktorOptions['wpBugTracktorStatus'] = $wpdb->escape($_POST['wpBugTracktorStatus']);
+                                $wpBugTracktorOptions['wpBugTracktorStatus'] = esc_sql($_POST['wpBugTracktorStatus']);
                             }                            
 
                             update_option($this->adminOptionsName, $wpBugTracktorOptions);

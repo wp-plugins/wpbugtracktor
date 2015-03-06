@@ -116,10 +116,10 @@ if(!function_exists('wpBugTracktorAdminPageEditProjects')) {
         $wpBugTracktorOptions = get_option('wpBugTracktorAdminOptions');
         
         if(@isset($_POST['wpbt_new_project_prefix']) && @isset($_POST['wpbt_new_project_title']) && @isset($_POST['wpbt_new_project_description'])) {
-            $prefix = $wpdb->escape($_POST['wpbt_new_project_prefix']);
-            $title = $wpdb->escape($_POST['wpbt_new_project_title']);
-            $description = $wpdb->escape($_POST['wpbt_new_project_description']);
-            $owner_id = $wpdb->escape($_POST['wpbt_new_project_owner_id']);
+            $prefix = esc_sql($_POST['wpbt_new_project_prefix']);
+            $title = esc_sql($_POST['wpbt_new_project_title']);
+            $description = esc_sql($_POST['wpbt_new_project_description']);
+            $owner_id = esc_sql($_POST['wpbt_new_project_owner_id']);
             $sql = "INSERT INTO `{$wpdb->prefix}wpbugtracktor_projects` (`primkey`, `title`, `description`, `project_prefix`, `owner_id`, `users_assigned`) VALUES (NULL, '{$title}', '{$description}', '{$prefix}', '{$owner_id}', '1');";
             $wpdb->query($sql);
         }

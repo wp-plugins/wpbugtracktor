@@ -10,8 +10,8 @@ if(!function_exists('wpbtAjaxSaveIssue')) {
 
         global $wpdb, $current_user;
 
-        @$title = $wpdb->escape($_POST['wpBugTracktorReportFormTitle']);
-        @$description = $wpdb->escape($_POST['wpBugTracktorReportFormDescription']);
+        @$title = esc_sql($_POST['wpBugTracktorReportFormTitle']);
+        @$description = esc_sql($_POST['wpBugTracktorReportFormDescription']);
         @$type = intval($_POST['wpBugTracktorReportIssueType']);
 
         // User
@@ -23,15 +23,15 @@ if(!function_exists('wpbtAjaxSaveIssue')) {
             $reporter_id = $current_user->ID;
         }
 
-        $reporter_email = $wpdb->escape($_POST['wpBugTracktorReportFormEmail']);
+        $reporter_email = esc_sql($_POST['wpBugTracktorReportFormEmail']);
 
         // IP ADDRESS
         if ( @isset($_SERVER["REMOTE_ADDR"]) )    {
-            $reporter_ip = $wpdb->escape($_SERVER["REMOTE_ADDR"]);
+            $reporter_ip = esc_sql($_SERVER["REMOTE_ADDR"]);
         } else if ( @isset($_SERVER["HTTP_X_FORWARDED_FOR"]) )    {
-            $reporter_ip = $wpdb->escape($_SERVER["HTTP_X_FORWARDED_FOR"]);
+            $reporter_ip = esc_sql($_SERVER["HTTP_X_FORWARDED_FOR"]);
         } else if ( @isset($_SERVER["HTTP_CLIENT_IP"]) )    {
-            $reporter_ip = $wpdb->escape($_SERVER["HTTP_CLIENT_IP"]);
+            $reporter_ip = esc_sql($_SERVER["HTTP_CLIENT_IP"]);
         } else {
             $reporter_ip = __('Unknown IP Address', 'wpbugtracktor');
         }
@@ -46,7 +46,7 @@ if(!function_exists('wpbtAjaxSaveIssue')) {
         }
 
         if(@isset($_POST['wpBugTracktorReportSeverity'])) {
-            $severity_priority = $wpdb->escape($_POST['wpBugTracktorReportSeverity']);
+            $severity_priority = esc_sql($_POST['wpBugTracktorReportSeverity']);
         } else {
             $severity_priority = 0;
         }
@@ -60,7 +60,7 @@ if(!function_exists('wpbtAjaxSaveIssue')) {
         if(@isset($_POST['wpBugTracktorReportMilestone'])) {
             wpBugTracktorCheckAdminPermissions();
             $target_fix_for_milestone_id = intval($_POST['wpBugTracktorReportMilestone']);
-            $tags = $wpdb->escape($_POST['wpBugTracktorReportTags']);   
+            $tags = esc_sql($_POST['wpBugTracktorReportTags']);   
         } else {
             $target_fix_for_milestone_id = 0;
             $tags = '';   

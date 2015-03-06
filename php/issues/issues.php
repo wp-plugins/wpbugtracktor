@@ -621,7 +621,7 @@ if(!function_exists('wpBugTracktorReportAnIssueStep2')) {
             
             if($issues[0]['reporter_id']!=0) {
                 $user_info = get_userdata($issues[0]['reporter_id']);
-                $username = $user_info->user_login;
+                $username = $user_info->display_name;
             } else {
                 $username = __('Guest', 'wpbugtracktor');
             }
